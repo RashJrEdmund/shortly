@@ -10,7 +10,6 @@ import type {
   CommonProps,
   CursorVariants,
 } from './common/types';
-import { ComponentProps } from 'react';
 
 const {
   colors: COLORS,

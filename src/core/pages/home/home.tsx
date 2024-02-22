@@ -1,4 +1,4 @@
-import { MainTag, DivCard, TextTag, Button } from '../../ui/components/atoms';
+import { MainTag, DivCard } from '../../ui/components/atoms';
 import {
   HomeBanner,
   UrlShortener,
