@@ -15,6 +15,7 @@ const {
 } = THEME_PALETTE;
 
 interface Props extends CommonProps {
+  use_desktop_mx_w?: boolean; // weather or not to use the desktop max width;
   align?: FLexAlignVariants;
   justify?: FlexJustifyVariants;
   flex_dir?: FlexDirectionVariants;
@@ -29,7 +30,7 @@ const MainTag = styled.main<Props>`
 
   width: ${({ width = '100%' }) => width};
   min-width: ${({ min_width = 'none' }) => min_width};
-  max-width: ${({ max_width = DIMENSIONS.desktop_mx_w }) => max_width};
+  max-width: ${({ max_width = 'none', use_desktop_mx_w }) => use_desktop_mx_w ? DIMENSIONS.desktop_mx_w : max_width}; // if use_desktop_mx_w ? set max_with to desktop max width
 
   height: ${({ height = 'fit-content' }) => height};
   min-height: ${({ min_height = DIMENSIONS.main_min_height }) => min_height};

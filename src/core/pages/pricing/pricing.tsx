@@ -1,5 +1,9 @@
+import { MainTag } from '../../ui/components/atoms';
+
 export default function PricingPage() {
   return (
-    <div>Pricing Page</div>
+    <MainTag>
+      Pricing Page
+    </MainTag>
   );
 }

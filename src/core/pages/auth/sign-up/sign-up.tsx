@@ -1,5 +1,9 @@
+import { MainTag } from '../../../ui/components/atoms';
+
 export default function SignUpPage() {
   return (
-    <div>Sign Up Page</div>
+    <MainTag>
+      Sign Up Page
+    </MainTag>
   );
 }

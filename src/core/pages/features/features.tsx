@@ -1,5 +1,9 @@
+import { MainTag } from '../../ui/components/atoms';
+
 export default function FeaturePage() {
   return (
-    <div>Feature Page</div>
+    <MainTag>
+      Feature Page
+    </MainTag>
   );
 }

@@ -1,5 +1,9 @@
+import { MainTag } from '../../ui/components/atoms';
+
 export default function ResourcePage() {
   return (
-    <div>Resource Page</div>
+    <MainTag>
+      Resource Page
+    </MainTag>
   );
 }

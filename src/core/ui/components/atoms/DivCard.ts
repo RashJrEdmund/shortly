@@ -10,19 +10,22 @@ import type {
   CommonProps,
   CursorVariants,
 } from './common/types';
+import { ComponentProps } from 'react';
 
 const {
   colors: COLORS,
+  dimensions: DIMENSIONS,
 } = THEME_PALETTE;
 
 interface Props extends CommonProps {
   animate_up_down?: boolean;
+  use_desktop_mx_w?: boolean; // weather or not to use the desktop max width;
   cursor?: CursorVariants;
   align?: FLexAlignVariants;
   justify?: FlexJustifyVariants;
   align_self?: FLexAlignVariants;
   justify_self?: FlexJustifyVariants;
-  flex_dir?: FlexDirectionVariants;
+  flex_dir?: FlexDirectionVariants; media_flex_dir?: FlexDirectionVariants; // for media query
   flex_wrap?: FlexWrapVariants;
 }
 
@@ -55,7 +58,7 @@ const DivCard = styled.div<Props>`
   outline: none;
   width: ${({ width = 'fit-content' }) => width};
   min-width: ${({ min_width = 'unset' }) => min_width};
-  max-width: ${({ max_width = 'none' }) => max_width};
+  max-width: ${({ max_width = 'none', use_desktop_mx_w }) => use_desktop_mx_w ? DIMENSIONS.desktop_mx_w : max_width}; // if use_desktop_mx_w ? set max_with to desktop max width
 
   height: ${({ height = 'fit-content' }) => height};
   min-height: ${({ min_height = 'unset' }) => min_height};
@@ -67,6 +70,10 @@ const DivCard = styled.div<Props>`
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media only screen and (max-width: 650px) {
+    flex-direction: ${({ flex_dir, media_flex_dir }) => (media_flex_dir || flex_dir || 'unset')};
   }
 `;
 

@@ -9,13 +9,13 @@ import type {
 
 const { colors: COLORS } = THEME_PALETTE;
 
-type IColor = 'inherit' | 'normal' | 'deemed' | 'invert' | 'error';
+type IColor = 'inherit' | 'normal' | 'deemed' | 'invert' | 'cyan' | 'error';
 
 interface Props extends CommonProps {
   no_white_space?: boolean;
   ellipsis?: boolean; // to create ellipsis, works hand in hand with no_white_space
   text_align?: 'center' | 'left' | 'right';
-  color_type?: IColor,
+  color?: IColor,
   weight?: WeightVariants;
   size?: SizeVariants;
   cursor?: CursorVariants;
@@ -25,6 +25,8 @@ interface Props extends CommonProps {
 
 const generateColor = (text: IColor) => {
   switch (text) {
+    case 'cyan':
+      return COLORS.cyan;
     case 'deemed':
       return COLORS.text_deemed;
     case 'invert':
@@ -56,9 +58,9 @@ const TextTag = styled.span<Props>`
   transform: ${({ transform = 'unset' }) => transform};
   z-index: ${({ z_index = 'unset' }) => z_index};
 
-  font-weight: ${({ weight = '400' }) => weight}; // 400 is defualt and normal font-weight, 700 is bold
-  font-size: ${({ size = '18px' }) => size}; // 1rem is defualt text size and 2rem is for like h1s
-  color: ${({ color_type = 'inherit' }) => generateColor(color_type)};
+  font-weight: ${({ weight = '400' }) => weight}; // 400 is default and normal font-weight, 700 is bold
+  font-size: ${({ size = '1.1rem' }) => size}; // 1.1rem is default text size (18px)
+  color: ${({ color = 'inherit' }) => generateColor(color)};
   white-space: ${({ no_white_space = false, ellipsis = false }) => (no_white_space || ellipsis) ? 'nowrap' : 'normal'};
   text-overflow: ${({ ellipsis = false }) => ellipsis ? 'ellipsis' : 'unset'};
   text-align: ${({ text_align = 'center' }) => text_align};
@@ -74,9 +76,9 @@ const TextTag = styled.span<Props>`
 
   ${({ sx }) => sx};
 
-  @media only screen and (max-width: 900px) {
-    color: ${({ media_color, color_type }) => generateColor(media_color ?? color_type ?? 'normal')};
-    font-size: ${({ media_size, size }) => (media_size ?? size ?? '1rem')}; // 1rem is defualt text size and 2rem is for like h1s
+  @media only screen and (max-width: 700px) {
+    color: ${({ media_color, color }) => generateColor(media_color ?? color ?? 'inherit')};
+    font-size: ${({ media_size, size }) => (media_size ?? size ?? '1rem')};
   }
 `;
 
