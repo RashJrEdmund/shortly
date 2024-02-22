@@ -6,8 +6,8 @@ import {
   PricingPage,
   ResourcePage,
   SignUpPage
-} from './pages';
-import { NavBar, Footer } from './ui/components/molecules';
+} from './core/pages';
+import { NavBar, Footer } from './core/ui/components/molecules';
 
 function App() {
   return (
