@@ -8,15 +8,15 @@ const FEATURES: IFooterSection = {
   list: [
     {
       text: 'Link Shortening',
-      url: '',
+      url: '/',
     },
     {
       text: 'Branded Links',
-      url: '',
+      url: '/',
     },
     {
       text: 'Analysis',
-      url: '',
+      url: '/',
     }
   ],
 };
@@ -26,15 +26,15 @@ const RESOURCES: IFooterSection = {
   list: [
     {
       text: 'Blog',
-      url: '',
+      url: '/',
     },
     {
       text: 'Developers',
-      url: '',
+      url: '/',
     },
     {
       text: 'Support',
-      url: '',
+      url: '/',
     }
   ],
 };
@@ -44,19 +44,19 @@ const COMPANY: IFooterSection = {
   list: [
     {
       text: 'About',
-      url: '',
+      url: '/',
     },
     {
       text: 'Our Team',
-      url: '',
+      url: '/',
     },
     {
       text: 'Courses',
-      url: '',
+      url: '/',
     },
     {
       text: 'Contact',
-      url: '',
+      url: '/',
     }
   ],
 };

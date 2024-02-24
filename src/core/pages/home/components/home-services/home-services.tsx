@@ -34,7 +34,7 @@ export default function HomeServices() {
           Advanced Statistics
         </TextTag>
 
-        <TextTag size='1rem'>
+        <TextTag size='1rem' media_sx='word-break: break-all;'>
           Track how your links are performing across the web with our
           advanced statistics dashboard
         </TextTag>
@@ -43,9 +43,8 @@ export default function HomeServices() {
       <ServiceCardWrapper>
         {
           APP_SERVICES.map(({ img_url, header, content }) => (
-            <DivCard width='min(97vw, 270px)' min_height='200px' bg='light'
-              flex_dir='column' align='start' justify='start' key={header}
-              radius='3px' padding='13px'
+            <DivCard className='card' key={header} bg='light'
+              flex_dir='column' align='start' justify='start' padding='13px'
             >
               <StyledServiceCardImage
                 src={img_url}

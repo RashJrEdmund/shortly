@@ -36,6 +36,9 @@ const MainTag = styled.main<Props>`
   min-height: ${({ min_height = DIMENSIONS.main_min_height }) => min_height};
   max-height: ${({ max_height = 'none' }) => max_height};
 
+  align-self: ${({ align_self = 'unset' }) => align_self};
+  justify-self: ${({ justify_self = 'unset' }) => justify_self};
+
   // positioning
   position: ${({ position = 'unset' }) => position};
   top: ${({ top = 'unset' }) => top};
@@ -46,13 +49,23 @@ const MainTag = styled.main<Props>`
   z-index: ${({ z_index = 'unset' }) => z_index};
 
   margin: ${({ margin = '0 auto' }) => margin};
-  padding: ${({ padding = '2rem 0' }) => padding};
+  padding: ${({ padding = '0' }) => padding};
   border: ${({ border }) => border ? `1px solid ${COLORS.border}` : 'none'};
   border-radius: ${({ radius = '4px' }) => radius};
 
   ${({ bg = 'light' }) => generateBg(bg)}
 
   ${({ sx }) => sx};
+
+
+  @media only screen and (max-width: 650px) {
+    width: ${({ width = 'fit-content', media_width }) => (media_width || width)};
+
+    align-self: ${({ align_self = 'unset', media_align_self }) => (media_align_self || align_self)};
+    justify-self: ${({ justify_self = 'unset', media_justify_self }) => (media_justify_self || justify_self)};
+
+    ${({ sx, media_sx }) => (media_sx || sx)};
+  }
 `;
 
 export default MainTag;

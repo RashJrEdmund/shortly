@@ -24,6 +24,11 @@ const generateBg = (bg: BgVariants) => {
       background-color: ${COLORS.cyan};
       color: ${COLORS.text_invert};
     `;
+  } else if (bg === 'deemed_cyan') {
+    return css`
+      background-color: ${COLORS.deemed_cyan};
+      color: ${COLORS.text_invert};
+    `;
   } else if (bg === 'light') {
     return css`
       background-color: ${COLORS.light};
@@ -32,11 +37,6 @@ const generateBg = (bg: BgVariants) => {
   } else if (bg === 'grayed') {
     return css`
       background-color: ${COLORS.grayed};
-      color: ${COLORS.text};
-    `;
-  } else if (bg === 'light_grayed') {
-    return css`
-      background-color: ${COLORS.light_grayed};
       color: ${COLORS.text};
     `;
   } else if (bg === 'error') {

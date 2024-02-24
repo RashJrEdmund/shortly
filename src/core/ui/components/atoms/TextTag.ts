@@ -12,14 +12,14 @@ const { colors: COLORS } = THEME_PALETTE;
 type IColor = 'inherit' | 'normal' | 'deemed' | 'invert' | 'cyan' | 'error';
 
 interface Props extends CommonProps {
+  to?: string; // to inherit from link tags
   no_white_space?: boolean;
   ellipsis?: boolean; // to create ellipsis, works hand in hand with no_white_space
   text_align?: 'center' | 'left' | 'right';
-  color?: IColor,
+  color?: IColor, hover_color?: IColor, media_color?: IColor; // for switching colors on media queries
   weight?: WeightVariants;
   size?: SizeVariants;
   cursor?: CursorVariants;
-  media_color?: IColor; // for switching colors on media queries
   media_size?: SizeVariants; // for switching sizes on media queries;
 }
 
@@ -49,6 +49,9 @@ const TextTag = styled.span<Props>`
   min-height: ${({ min_height = 'unset' }) => min_height};
   max-height: ${({ max_height = 'none' }) => max_height};
 
+  align-self: ${({ align_self = 'unset' }) => align_self};
+  justify-self: ${({ justify_self = 'unset' }) => justify_self};
+
   // positioning
   position: ${({ position = 'unset' }) => position};
   top: ${({ top = 'unset' }) => top};
@@ -76,9 +79,22 @@ const TextTag = styled.span<Props>`
 
   ${({ sx }) => sx};
 
-  @media only screen and (max-width: 700px) {
-    color: ${({ media_color, color }) => generateColor(media_color ?? color ?? 'inherit')};
+  transition: 300ms;
+
+  &:hover {
+    color: ${({ color = 'inherit', hover_color }) => generateColor(hover_color || color)};
+  }
+
+  @media only screen and (max-width: 650px) {
+    width: ${({ width = 'fit-content', media_width }) => (media_width || width)};
+
+    color: ${({ media_color, color = 'inherit' }) => generateColor(media_color || color)};
     font-size: ${({ media_size, size }) => (media_size ?? size ?? '1rem')};
+
+    align-self: ${({ align_self = 'unset', media_align_self }) => (media_align_self || align_self)};
+    justify-self: ${({ justify_self = 'unset', media_justify_self }) => (media_justify_self || justify_self)};
+
+    ${({ sx, media_sx }) => (media_sx || sx)};
   }
 `;
 
