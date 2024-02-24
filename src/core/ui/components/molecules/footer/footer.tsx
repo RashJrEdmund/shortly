@@ -46,7 +46,7 @@ export default function Footer() {
               </TextTag>
 
               {list.map(({ text, url }) => (
-                <TextTag as={Link} to={url} key={text} hover_color='cyan' cursor='pointer' margin='5px 0'>
+                <TextTag as={Link} to={url} key={text} hover_color='cyan' cursor='pointer' margin='5px 0' no_white_space>
                   {text}
                 </TextTag>
               ))}

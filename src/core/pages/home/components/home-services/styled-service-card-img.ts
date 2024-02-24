@@ -26,6 +26,11 @@ const ServiceCardWrapper = styled.section<Props>`
     margin: 0 auto;
     border-radius: 3px;
   }
+
+
+  @media only screen and (max-width: 650px) {
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  }
 `;
 
 const StyledServiceCardImage = styled.img<Props>`

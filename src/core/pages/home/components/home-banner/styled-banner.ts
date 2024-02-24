@@ -16,15 +16,20 @@ const StyledHomeBanner = styled.section`
   max-width: ${DIMENSIONS.desktop_mx_w};
 
   .top {
-    min-width: 300px;
+    min-width: 400px;
     max-width: ${DIMENSIONS.desktop_mx_w};
   }
 
   @media only screen and (max-width: 650px) {
     flex-direction: column-reverse;
+    width: 100%;
     max-width: 100vw;
 
     padding: 0 0 8rem;
+
+    .top {
+      min-width: 300px;
+    }
   }
 `;
 
