@@ -12,14 +12,14 @@ const { colors: COLORS } = THEME_PALETTE;
 type IColor = 'inherit' | 'normal' | 'deemed' | 'invert' | 'cyan' | 'error';
 
 interface Props extends CommonProps {
+  to?: string; // to inherit from link tags
   no_white_space?: boolean;
   ellipsis?: boolean; // to create ellipsis, works hand in hand with no_white_space
   text_align?: 'center' | 'left' | 'right';
-  color?: IColor,
+  color?: IColor, hover_color?: IColor, media_color?: IColor; // for switching colors on media queries
   weight?: WeightVariants;
   size?: SizeVariants;
   cursor?: CursorVariants;
-  media_color?: IColor; // for switching colors on media queries
   media_size?: SizeVariants; // for switching sizes on media queries;
 }
 
@@ -76,8 +76,14 @@ const TextTag = styled.span<Props>`
 
   ${({ sx }) => sx};
 
+  transition: 300ms;
+
+  &:hover {
+    color: ${({ color = 'inherit', hover_color }) => generateColor(hover_color || color)};
+  }
+
   @media only screen and (max-width: 700px) {
-    color: ${({ media_color, color }) => generateColor(media_color ?? color ?? 'inherit')};
+    color: ${({ media_color, color = 'inherit' }) => generateColor(media_color || color)};
     font-size: ${({ media_size, size }) => (media_size ?? size ?? '1rem')};
   }
 `;

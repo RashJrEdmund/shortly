@@ -4,15 +4,15 @@ import { Button, DivCard, TextTag } from '../../atoms';
 const RIGHT_NAV = [
   {
     text: 'Features',
-    route: 'features',
+    route: '/features',
   },
   {
     text: 'Pricing',
-    route: 'pricing',
+    route: '/pricing',
   },
   {
     text: 'Resources',
-    route: 'resources',
+    route: '/resources',
   }
 ];
 
@@ -22,35 +22,33 @@ export default function NavBar() {
       use_desktop_mx_w
       width='100%'
       margin='0 auto'
-      padding='10px 0'
+      padding='1.3rem 0 10px'
       justify='space-between'
     >
       <DivCard gap='1rem'>
-        <TextTag as='h1' weight='700' size='1.5rem'>
-          <Link to='/'>
+        <TextTag as={Link} to='/'>
+          <TextTag as='h1' weight='700' size='1.75rem'>
             Shortly
-          </Link>
+          </TextTag>
         </TextTag>
 
         <DivCard gap='1rem'>
           {
             RIGHT_NAV.map(({ text, route }) => (
-              <Link to={route} key={text}>
-                <TextTag>
-                  {text}
-                </TextTag>
-              </Link>
+              <TextTag to={route} key={text} color='deemed' hover_color='normal'>
+                {text}
+              </TextTag>
             ))
           }
         </DivCard>
       </DivCard>
 
       <DivCard gap='1rem'>
-        <Button bg='none' radius='15px' padding='7px 15px'>
+        <Button as={Link} to='/login' no_white_space bg='none' radius='15px' padding='7px 15px'>
           Login
         </Button>
 
-        <Button radius='15px' padding='7px 15px'>
+        <Button as={Link} to='/sign-up' no_white_space radius='15px' padding='7px 15px' hover_bg='deemed_cyan'>
           Sign Up
         </Button>
       </DivCard>

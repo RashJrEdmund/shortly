@@ -7,7 +7,7 @@ export default function HomeBanner() {
       width='100%'
       justify='space-between'
       media_flex_dir='column'
-      min_height='70vh'
+      min_height='80vh'
     >
       <DivCard flex_dir='column' align='start' max_width='400px'>
         <TextTag as='h1' weight='700' size='3rem' text_align='left' color='normal'>
@@ -19,7 +19,7 @@ export default function HomeBanner() {
           insights on how your links are performing
         </TextTag>
 
-        <Button radius='15px' margin='1rem 0 0' padding='7px 15px'>
+        <Button radius='15px' margin='2rem 0 0' padding='7px 15px' hover_bg='deemed_cyan'>
           Get Started
         </Button>
       </DivCard>

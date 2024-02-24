@@ -1,6 +1,6 @@
 /* THIS FILE KEEPS HOLD OF INTERFACES/TYPES THAT'RE COMMON BETWEEN ATOMS */
 
-export type BgVariants = 'inherit' | 'cyan' | 'dark' | 'deep_dark' | 'light' | 'grayed' | 'light_grayed' | 'error' | 'none';
+export type BgVariants = 'inherit' | 'cyan' | 'deemed_cyan' | 'dark' | 'deep_dark' | 'light' | 'grayed' | 'light_grayed' | 'error' | 'none';
 
 export type FlexJustifyVariants = 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'center' | 'end';
 
@@ -43,7 +43,7 @@ export interface CommonProps {
     min_height?: string;
     max_height?: string;
     gap?: string;
-    bg?: BgVariants;
+    bg?: BgVariants; hover_bg?: BgVariants;
 
     // positioning !
     position?: PositionVariants;

@@ -24,6 +24,11 @@ const generateBg = (bg: BgVariants) => {
       background-color: ${COLORS.cyan};
       color: ${COLORS.text_invert};
     `;
+  } else if (bg === 'deemed_cyan') {
+    return css`
+      background-color: ${COLORS.deemed_cyan};
+      color: ${COLORS.text_invert};
+    `;
   } else if (bg === 'light') {
     return css`
       background-color: ${COLORS.light};

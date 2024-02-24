@@ -46,7 +46,7 @@ const MainTag = styled.main<Props>`
   z-index: ${({ z_index = 'unset' }) => z_index};
 
   margin: ${({ margin = '0 auto' }) => margin};
-  padding: ${({ padding = '2rem 0' }) => padding};
+  padding: ${({ padding = '0' }) => padding};
   border: ${({ border }) => border ? `1px solid ${COLORS.border}` : 'none'};
   border-radius: ${({ radius = '4px' }) => radius};
 

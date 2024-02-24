@@ -14,6 +14,7 @@ const ServiceCardWrapper = styled.section<Props>`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin: 0 0 5rem;
 `;
 
 const StyledServiceCardImage = styled.img<Props>`

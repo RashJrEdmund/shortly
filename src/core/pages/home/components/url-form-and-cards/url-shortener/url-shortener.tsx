@@ -1,17 +1,63 @@
 import { ChangeEvent, FormEventHandler, useState } from 'react';
-import { Button, DivCard, ShortenField, TextTag } from '../../../../ui/components/atoms';
+import { Button, DivCard, ShortenField, TextTag } from '../../../../../ui/components/atoms';
+import { isValidUrl } from '../../../../../utils';
+import { shortenUrl } from '../../../../../api';
+import { ILink } from '../../../../../interfaces';
+import { CLIENT_STORAGE } from '../../../../../store/client-storage';
+import { useLinkStore } from '../../../../../store';
 
 export default function UrlShortener() {
   const [url, setUrl] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const localStorage = new CLIENT_STORAGE('local');
+
+  const { setUserUrls } = useLinkStore();
+
+  const saveUserLink = (link: ILink) => {
+    const prev_links = localStorage.get<ILink[]>('user_links') || [];
+
+    const update = [link, ...prev_links];
+
+    localStorage.save('user_links', update);
+
+    setUserUrls(update);
+  }
 
   const handleSubmit: FormEventHandler<HTMLDivElement> = (e) => {
     e.preventDefault();
 
+    if (loading) return;
+
     if (!url.trim()) {
-      setErrorMsg('Please add a link')
+      setUrl('');
+      setErrorMsg('Please add a link');
       return;
     }
+    
+    if (!isValidUrl(url.trim())) {
+      setErrorMsg('Url is invalid');
+      return;
+    }
+
+    setLoading(true);
+    shortenUrl(url)
+      .then((res) => {
+        const new_link: ILink = {
+          id: crypto.randomUUID(),
+          short: res.shrtlnk,
+          original: res.url,
+        };
+
+        saveUserLink(new_link);
+      })
+      .catch(() => {
+        setErrorMsg('An error ocurred, please try again');
+      })
+      .finally(() => {
+        setUrl('');
+        setLoading(false);
+      });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +98,7 @@ export default function UrlShortener() {
           }
         </DivCard>
 
-        <Button padding='14px 15px' no_white_space>
+        <Button padding='14px 15px' no_white_space disabled={loading}>
           Shorten It
         </Button>
       </DivCard>

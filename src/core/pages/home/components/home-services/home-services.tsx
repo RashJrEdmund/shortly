@@ -43,7 +43,7 @@ export default function HomeServices() {
       <ServiceCardWrapper>
         {
           APP_SERVICES.map(({ img_url, header, content }) => (
-            <DivCard width='min(97vw, 270px)' min_height='200px' bg='light'
+            <DivCard width='min(97vw, 300px)' min_height='200px' bg='light'
               flex_dir='column' align='start' justify='start' key={header}
               radius='3px' padding='13px'
             >

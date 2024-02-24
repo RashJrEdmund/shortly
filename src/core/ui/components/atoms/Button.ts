@@ -8,11 +8,11 @@ const {
 } = THEME_PALETTE;
 
 interface Props extends CommonProps {
+  to?: string; // to inherit from link tags
   no_white_space?: boolean;
   cursor?: CursorVariants;
   weight?: WeightVariants;
   size?: SizeVariants;
-  href?: string; // this has no use other than calming down the as 'a' attributes problem
   disabled?: boolean;
 }
 
@@ -49,8 +49,14 @@ const Button = styled.button<Partial<Props>>`
   cursor: ${({ cursor = 'pointer' }) => cursor};
 
   ${({ bg = 'cyan' }) => generateBg(bg)}
-
+  
   ${({ sx = '' }) => sx};
+  
+  transition: hover 300ms;
+
+  &:hover {
+    ${({ bg = 'cyan', hover_bg }) => generateBg(hover_bg || bg)}
+  }
 `;
 
 export default Button;
