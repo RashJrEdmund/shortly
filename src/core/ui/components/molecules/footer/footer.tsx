@@ -1,6 +1,14 @@
 import { DivCard, TextTag } from '../../atoms';
 import { FEATURES, RESOURCES, COMPANY } from '../../../ui-constants';
 import { Link } from 'react-router-dom';
+import { FooterIcons } from './styled-footer-section';
+
+const MEDIA_ICONS: string[] = [
+  '/images/icon-facebook.svg',
+  '/images/icon-twitter.svg',
+  '/images/icon-pinterest.svg',
+  '/images/icon-instagram.svg',
+];
 
 export default function Footer() {
   return (
@@ -13,6 +21,7 @@ export default function Footer() {
         align='start'
         justify='space-between'
         media_flex_dir='column' // media query
+        media_align='center'
         gap='2rem'
       >
         <TextTag as='h1' weight='700' size='1.5rem'>
@@ -27,11 +36,11 @@ export default function Footer() {
           justify='space-around'
           gap='1rem'
           media_flex_dir='column'
+          media_align='center'
         >
-          {' '}
           {/* THE MID SECTION WITH 3 DIVS */}
           {[FEATURES, RESOURCES, COMPANY].map(({ header, list }) => (
-            <DivCard flex_dir='column' align='start' key={header}>
+            <DivCard flex_dir='column' align='start' media_align='center' key={header}>
               <TextTag as='h2' weight='600' color='invert' margin='0 0 1rem'>
                 {header}
               </TextTag>
@@ -45,15 +54,13 @@ export default function Footer() {
           ))}
         </DivCard>
 
-        <DivCard>
+        <FooterIcons>
           {
-          ['F', 'T', 'P', 'I'].map((icon) => (
-            <TextTag key={icon} margin='0 5px'>
-              {icon}
-            </TextTag>
-          ))
+            MEDIA_ICONS.map((icon) => (
+              <img src={icon} alt={icon}/>
+            ))
           }
-        </DivCard>
+        </FooterIcons>
       </DivCard>
     </DivCard>
   );

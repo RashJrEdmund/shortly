@@ -13,7 +13,7 @@ const ShortenField = styled.input<Partial<Props>>`
   width: 100%;
   padding: 1rem;
   border-radius: 6px;
-  border: ${({ error = false }) => error ? `0.5px solid ${COLORS.error}` : '0.5px solid transparent'};
+  border: ${({ error = false }) => error ? `2px solid ${COLORS.error}` : '2px solid transparent'};
 `;
 
 export default ShortenField;

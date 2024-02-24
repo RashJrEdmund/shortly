@@ -10,11 +10,22 @@ interface Props {
 }
 
 const ServiceCardWrapper = styled.section<Props>`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  width: fit-content;
   margin: 0 0 5rem;
+  align-items: center;
+  justify-content: center;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1rem;
+
+  .card {
+    width: min(97vw, 300px, 100%);
+    min-height: 200px;
+    flex-direction: column;
+    margin: 0 auto;
+    border-radius: 3px;
+  }
 `;
 
 const StyledServiceCardImage = styled.img<Props>`

@@ -15,7 +15,7 @@ export default function HomePage() {
         position='relative'
         flex_dir='column'
         justify='start'
-        bg='light_grayed'
+        bg='grayed'
         min_height='70vh'
         padding='2rem 0'
       >

@@ -49,6 +49,9 @@ const TextTag = styled.span<Props>`
   min-height: ${({ min_height = 'unset' }) => min_height};
   max-height: ${({ max_height = 'none' }) => max_height};
 
+  align-self: ${({ align_self = 'unset' }) => align_self};
+  justify-self: ${({ justify_self = 'unset' }) => justify_self};
+
   // positioning
   position: ${({ position = 'unset' }) => position};
   top: ${({ top = 'unset' }) => top};
@@ -82,9 +85,16 @@ const TextTag = styled.span<Props>`
     color: ${({ color = 'inherit', hover_color }) => generateColor(hover_color || color)};
   }
 
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 650px) {
+    width: ${({ width = 'fit-content', media_width }) => (media_width || width)};
+
     color: ${({ media_color, color = 'inherit' }) => generateColor(media_color || color)};
     font-size: ${({ media_size, size }) => (media_size ?? size ?? '1rem')};
+
+    align-self: ${({ align_self = 'unset', media_align_self }) => (media_align_self || align_self)};
+    justify-self: ${({ justify_self = 'unset', media_justify_self }) => (media_justify_self || justify_self)};
+
+    ${({ sx, media_sx }) => (media_sx || sx)};
   }
 `;
 

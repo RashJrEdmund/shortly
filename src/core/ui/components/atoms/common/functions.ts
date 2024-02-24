@@ -39,11 +39,6 @@ const generateBg = (bg: BgVariants) => {
       background-color: ${COLORS.grayed};
       color: ${COLORS.text};
     `;
-  } else if (bg === 'light_grayed') {
-    return css`
-      background-color: ${COLORS.light_grayed};
-      color: ${COLORS.text};
-    `;
   } else if (bg === 'error') {
     return css`
       border: 1px solid ${COLORS.error};

@@ -29,11 +29,14 @@ const Button = styled.button<Partial<Props>>`
   width: ${({ width = 'fit-content' }) => width};
   min-width: ${({ min_width = 'unset' }) => min_width};
   max-width: ${({ max_width = 'none' }) => max_width};
-
+  
   height: ${({ height = 'fit-content' }) => height};
   min-height: ${({ min_height = 'unset' }) => min_height};
   max-height: ${({ max_height = 'none' }) => max_height};
-
+  
+  align-self: ${({ align_self = 'unset' }) => align_self};
+  justify-self: ${({ justify_self = 'unset' }) => justify_self};
+  
   // positioning
   position: ${({ position = 'unset' }) => position};
   top: ${({ top = 'unset' }) => top};
@@ -45,7 +48,7 @@ const Button = styled.button<Partial<Props>>`
 
   ${flex_template};
   gap: ${({ gap = '5px' }) => gap};
-
+  
   cursor: ${({ cursor = 'pointer' }) => cursor};
 
   ${({ bg = 'cyan' }) => generateBg(bg)}
@@ -56,6 +59,15 @@ const Button = styled.button<Partial<Props>>`
 
   &:hover {
     ${({ bg = 'cyan', hover_bg }) => generateBg(hover_bg || bg)}
+  }
+
+  @media only screen and (max-width: 650px) {
+    width: ${({ width = 'fit-content', media_width }) => (media_width || width)};
+
+    align-self: ${({ align_self = 'unset', media_align_self }) => (media_align_self || align_self)};
+    justify-self: ${({ justify_self = 'unset', media_justify_self }) => (media_justify_self || justify_self)};
+
+    ${({ sx, media_sx }) => (media_sx || sx)};
   }
 `;
 

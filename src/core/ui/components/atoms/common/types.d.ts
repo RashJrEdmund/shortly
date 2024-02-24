@@ -1,6 +1,6 @@
 /* THIS FILE KEEPS HOLD OF INTERFACES/TYPES THAT'RE COMMON BETWEEN ATOMS */
 
-export type BgVariants = 'inherit' | 'cyan' | 'deemed_cyan' | 'dark' | 'deep_dark' | 'light' | 'grayed' | 'light_grayed' | 'error' | 'none';
+export type BgVariants = 'inherit' | 'cyan' | 'deemed_cyan' | 'dark' | 'deep_dark' | 'light' | 'grayed' | 'error' | 'none';
 
 export type FlexJustifyVariants = 'space-around' | 'space-between' | 'space-evenly' | 'start' | 'center' | 'end';
 
@@ -31,12 +31,12 @@ export type FlexWrapVariants = 'wrap' | 'nowrap' | 'unset';
 export type CursorVariants = 'default' | 'pointer' | 'text' | 'inherit' | 'not-allowed';
 
 export interface CommonProps {
-    sx?: string;
+    sx?: string; media_sx?: string;
     padding?: string;
     margin?: string;
     border?: boolean;
     radius?: string;
-    width?: string;
+    width?: string; media_width?: string;
     min_width?: string;
     max_width?: string;
     height?: string;
@@ -44,6 +44,8 @@ export interface CommonProps {
     max_height?: string;
     gap?: string;
     bg?: BgVariants; hover_bg?: BgVariants;
+    align_self?: FLexAlignVariants; media_align_self?: FLexAlignVariants;
+    justify_self?: FlexJustifyVariants; media_justify_self?: FlexJustifyVariants;
 
     // positioning !
     position?: PositionVariants;

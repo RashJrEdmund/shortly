@@ -15,9 +15,9 @@ export default function UrlShortener() {
   const { setUserUrls } = useLinkStore();
 
   const saveUserLink = (link: ILink) => {
-    const prev_links = localStorage.get<ILink[]>('user_links') || [];
+    const local_links = localStorage.get<ILink[]>('user_links') || [];
 
-    const update = [link, ...prev_links];
+    const update = [link, ...local_links];
 
     localStorage.save('user_links', update);
 
@@ -34,7 +34,7 @@ export default function UrlShortener() {
       setErrorMsg('Please add a link');
       return;
     }
-    
+
     if (!isValidUrl(url.trim())) {
       setErrorMsg('Url is invalid');
       return;
@@ -75,9 +75,13 @@ export default function UrlShortener() {
       transform='translate(-50%, -50%)'
       padding='1.4rem 1rem'
       radius='10px'
+      media_sx={`
+        padding: 10px;
+      `}
     >
       <DivCard as='form' width='100%' gap='1rem' padding='10px'
         onSubmit={handleSubmit}
+        media_flex_dir='column'
       >
         <DivCard width='100%' position='relative'>
           <ShortenField
@@ -98,8 +102,10 @@ export default function UrlShortener() {
           }
         </DivCard>
 
-        <Button padding='14px 15px' no_white_space disabled={loading}>
-          Shorten It
+        <Button padding='14px 15px' no_white_space disabled={loading} bg={loading ? 'deemed_cyan' : 'cyan'}
+          media_width='100%'
+        >
+          Shorten It!
         </Button>
       </DivCard>
     </DivCard>

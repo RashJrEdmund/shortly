@@ -8,7 +8,6 @@ interface IColorPalette {
   dark: string;
   deep_dark: string;
   grayed: string;
-  light_grayed: string;
   light: string;
   cyan: string; deemed_cyan: string; // for hover effects
   error: string;
@@ -36,7 +35,6 @@ const THEME_PALETTE: {
     dark: 'var(--app_dark)',
     deep_dark: 'var(--app_dark_violet)',
     grayed: 'var(--app_gray)',
-    light_grayed: 'var(--app_light_gray)',
     light: 'var(--app_light)',
     cyan: 'var(--app_cyan)', deemed_cyan: 'var(--deemed_app_cyan)',
     error: 'var(--error)',

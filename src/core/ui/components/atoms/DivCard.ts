@@ -20,16 +20,15 @@ interface Props extends CommonProps {
   animate_up_down?: boolean;
   use_desktop_mx_w?: boolean; // weather or not to use the desktop max width;
   cursor?: CursorVariants;
-  align?: FLexAlignVariants;
-  justify?: FlexJustifyVariants;
-  align_self?: FLexAlignVariants;
-  justify_self?: FlexJustifyVariants;
+  align?: FLexAlignVariants; media_align?: FLexAlignVariants;
+  justify?: FlexJustifyVariants; media_justify?: FlexJustifyVariants;
   flex_dir?: FlexDirectionVariants; media_flex_dir?: FlexDirectionVariants; // for media query
   flex_wrap?: FlexWrapVariants;
 }
 
 const DivCard = styled.div<Props>`
   display: flex;
+  flex-direction: ${({ flex_dir = 'unset' }) => flex_dir};
   justify-content: ${({ justify = 'center' }) => justify};
   align-items: ${({ align = 'center' }) => align};
   align-self: ${({ align_self = 'unset' }) => align_self};
@@ -39,7 +38,6 @@ const DivCard = styled.div<Props>`
   gap: ${({ gap = 'unset' }) => gap};
   padding: ${({ padding = '0' }) => padding};
   margin: ${({ margin = '0' }) => margin};
-  flex-direction: ${({ flex_dir = 'unset' }) => flex_dir};
   border: ${({ border }) => border ? `1px solid ${COLORS.border}` : 'none'};
   border-radius: ${({ radius = '0' }) => radius};
 
@@ -66,13 +64,22 @@ const DivCard = styled.div<Props>`
   ${({ bg = 'inherit' }) => generateBg(bg)}
 
   ${({ sx }) => sx};
-
+  
   &::-webkit-scrollbar {
     display: none;
   }
 
   @media only screen and (max-width: 650px) {
+    ${({ sx, media_sx }) => (media_sx || sx)};
+
+    width: ${({ width = 'fit-content', media_width }) => (media_width || width)};
+
     flex-direction: ${({ flex_dir, media_flex_dir }) => (media_flex_dir || flex_dir || 'unset')};
+    justify-content: ${({ justify = 'center', media_justify }) => (media_justify || justify)};
+    align-items: ${({ align = 'center', media_align }) => (media_align || align)};
+
+    align-self: ${({ align_self = 'unset', media_align_self }) => (media_align_self || align_self)};
+    justify-self: ${({ justify_self = 'unset', media_justify_self }) => (media_justify_self || justify_self)};
   }
 `;
 

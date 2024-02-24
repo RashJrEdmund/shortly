@@ -1,25 +1,29 @@
-import { THEME_PALETTE } from '../../../theme';
+import { THEME_PALETTE, flex_template } from '../../../theme';
 import styled from '@emotion/styled';
+
 const {
-  dimensions: DIMENSIONS,
+  colors: COLORS,
 } = THEME_PALETTE;
 
 interface Props {
   //
 }
 
-const StyledFooterSection = styled.main<Props>`
-  background-color: brown;
-  width: 100%;
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  max-width: ${DIMENSIONS.desktop_mx_w};
+const FooterIcons = styled.main<Props>`
+  ${flex_template};
+  width: fit-content;
+  gap: 1rem;
 
-  @media only screen and (max-width: 600px) {
-    flex-direction: column;
-    align-items: center;
+  img {
+    transition: 300ms;
+    border-radius: 4px;
+
+    &:hover {
+      background: ${COLORS.cyan};
+    }
   }
 `;
 
-export default StyledFooterSection;
+export {
+  FooterIcons,
+};
