@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button, DivCard, TextTag } from '../../atoms';
-import { useState } from 'react';
+import { LegacyRef, useRef, useState } from 'react';
 import { StyledNavBar } from './styled-nav';
 
 const RIGHT_NAV = [
@@ -20,22 +20,33 @@ const RIGHT_NAV = [
 
 const MENU_ICONS = {
   open: '/images/icon-menu.svg',
-  close: '/images/icon-menu.svg',
+  close: '/images/icon-menu-close.svg',
 }
 
 export default function NavBar() {
-  const [menuIcon, setMenuIcon] = useState<string>(MENU_ICONS.close);
+  const [menuIcon, setMenuIcon] = useState<string>(MENU_ICONS.open);
   const [isMenuOpen, setMenuOpen] = useState<boolean>(false);
 
-  const toggleMenu = () => {
+  const bottomNavRef = useRef<HTMLDivElement>();
+
+  const closeNavMenu = () => {
+    // function to close nav
+    setMenuOpen(false);
+    setMenuIcon(MENU_ICONS.open);
+  };
+
+  const toggleNavMenu = () => {
     if (isMenuOpen) {
-      setMenuOpen(false);
-      setMenuIcon(MENU_ICONS.close);
+      console.log('closing menu')
+      closeNavMenu();
       return;
     }
 
+    console.log('opening menu');
     setMenuOpen(true);
-    setMenuIcon(MENU_ICONS.open);
+    setMenuIcon(MENU_ICONS.close);
+
+    bottomNavRef.current?.focus();
   };
 
   return (
@@ -47,15 +58,18 @@ export default function NavBar() {
           </TextTag>
         </TextTag>
 
-        <img id='menu-icon' height={40} width={40} src={menuIcon} alt={menuIcon} onClick={toggleMenu} />
+        <img id='menu-icon' height={40} width={40} src={menuIcon} alt={menuIcon} onClick={toggleNavMenu} />
       </DivCard>
 
-      <DivCard className='bottom' width='100%' justify='space-between' gap='1rem'>
+      <DivCard ref={bottomNavRef as unknown as LegacyRef<HTMLDivElement>} tabIndex={2}
+        className='bottom' width='100%' justify='space-between' gap='1rem'
+        onBlur={closeNavMenu}
+      >
         <DivCard gap='1rem'>
           {
             RIGHT_NAV.map(({ text, route }) => (
               <TextTag as={Link} to={route} key={text} color='deemed' hover_color='normal'
-                media_color='invert'
+                media_color='invert' media_width='100%'
               >
                 {text}
               </TextTag>

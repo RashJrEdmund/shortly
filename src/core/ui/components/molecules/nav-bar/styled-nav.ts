@@ -36,6 +36,7 @@ const StyledNavBar = styled.nav<Props>`
     }
 
     .bottom {
+      outline: none;
       flex-direction: column;
       background-color: ${COLORS.dark};
       border-radius: 10px;

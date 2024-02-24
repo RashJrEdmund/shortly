@@ -13,6 +13,7 @@ const FooterIcons = styled.main<Props>`
   ${flex_template};
   width: fit-content;
   gap: 1rem;
+  min-width: 100px;
 
   img {
     transition: 300ms;
@@ -21,6 +22,10 @@ const FooterIcons = styled.main<Props>`
     &:hover {
       background: ${COLORS.cyan};
     }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    flex-wrap: wrap;
   }
 `;
 
