@@ -1,15 +1,11 @@
 import { DivCard, TextTag, Button } from '../../../../ui/components/atoms';
 
+import { StyledHomeBanner } from './styled-banner'
+
 export default function HomeBanner() {
   return (
-    <DivCard as='section' use_desktop_mx_w
-      margin='0 auto'
-      width='100%'
-      justify='space-between'
-      media_flex_dir='column'
-      min_height='80vh'
-    >
-      <DivCard flex_dir='column' align='start' max_width='400px'>
+    <StyledHomeBanner>
+      <DivCard className='top' flex_dir='column' align='start' max_width='400px'>
         <TextTag as='h1' weight='700' size='3rem' text_align='left' color='normal'>
           More than Just shorter links
         </TextTag>
@@ -24,7 +20,12 @@ export default function HomeBanner() {
         </Button>
       </DivCard>
 
-      <img src='/images/illustration-working.svg' alt='workign illustration' />
-    </DivCard>
+      <img
+        src='/images/illustration-working.svg'
+        alt='working illustration'
+
+        srcSet='/images/illustration-working-mobile.svg 650w, /images/illustration-working.svg 1000w'
+      />
+    </StyledHomeBanner>
   );
 }

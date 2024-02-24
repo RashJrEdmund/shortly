@@ -70,8 +70,6 @@ const DivCard = styled.div<Props>`
   }
 
   @media only screen and (max-width: 650px) {
-    ${({ sx, media_sx }) => (media_sx || sx)};
-
     width: ${({ width = 'fit-content', media_width }) => (media_width || width)};
 
     flex-direction: ${({ flex_dir, media_flex_dir }) => (media_flex_dir || flex_dir || 'unset')};
@@ -80,6 +78,8 @@ const DivCard = styled.div<Props>`
 
     align-self: ${({ align_self = 'unset', media_align_self }) => (media_align_self || align_self)};
     justify-self: ${({ justify_self = 'unset', media_justify_self }) => (media_justify_self || justify_self)};
+
+    ${({ sx, media_sx }) => (media_sx || sx)};
   }
 `;
 

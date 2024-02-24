@@ -1,7 +1,7 @@
 import { DivCard, TextTag } from '../../atoms';
 import { FEATURES, RESOURCES, COMPANY } from '../../../ui-constants';
 import { Link } from 'react-router-dom';
-import { FooterIcons } from './styled-footer-section';
+import { FooterIcons } from './styled-footer';
 
 const MEDIA_ICONS: string[] = [
   '/images/icon-facebook.svg',
@@ -57,7 +57,7 @@ export default function Footer() {
         <FooterIcons>
           {
             MEDIA_ICONS.map((icon) => (
-              <img src={icon} alt={icon}/>
+              <img src={icon} alt={icon} key={icon} />
             ))
           }
         </FooterIcons>

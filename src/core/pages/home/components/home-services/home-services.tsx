@@ -34,7 +34,7 @@ export default function HomeServices() {
           Advanced Statistics
         </TextTag>
 
-        <TextTag size='1rem'>
+        <TextTag size='1rem' media_sx='word-break: break-all;'>
           Track how your links are performing across the web with our
           advanced statistics dashboard
         </TextTag>

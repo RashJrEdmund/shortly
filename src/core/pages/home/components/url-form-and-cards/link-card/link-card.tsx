@@ -27,7 +27,7 @@ export default function LinkCard({ link, copiedLinks, setCopiedLinks }: Props) {
       media_flex_dir='column'
       media_align='start'
     >
-      <TextTag text_align='left'>
+      <TextTag text_align='left' sx='word-break: break-all;'>
         {link.original}
       </TextTag>
 
@@ -36,7 +36,7 @@ export default function LinkCard({ link, copiedLinks, setCopiedLinks }: Props) {
         media_flex_dir='column'
         media_align='start'
       >
-        <TextTag color='cyan' text_align='left'>
+        <TextTag color='cyan' text_align='left' sx='word-break: break-all;'>
           {link.short}
         </TextTag>
 
