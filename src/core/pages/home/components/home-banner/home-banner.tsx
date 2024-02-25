@@ -6,11 +6,11 @@ export default function HomeBanner() {
   return (
     <StyledHomeBanner>
       <DivCard className='top' flex_dir='column' align='start' max_width='400px'>
-        <TextTag as='h1' weight='700' size='3rem' text_align='left' color='normal'>
+        <TextTag as='h1' weight='700' size='4rem' text_align='left' color='normal'>
           More than Just shorter links
         </TextTag>
 
-        <TextTag text_align='left'>
+        <TextTag text_align='left' max_width='450px'>
           Build you brand&apos;s recognition and get detailed
           insights on how your links are performing
         </TextTag>
@@ -24,7 +24,9 @@ export default function HomeBanner() {
         src='/images/illustration-working.svg'
         alt='working illustration'
 
-        srcSet='/images/illustration-working-mobile.svg 650w, /images/illustration-working.svg 1000w'
+        height={600}
+        width={800}
+        // srcSet='/images/illustration-working-mobile.svg 650w, /images/illustration-working.svg 1000w'
       />
     </StyledHomeBanner>
   );
