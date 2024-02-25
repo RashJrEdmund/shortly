@@ -1,34 +1,43 @@
-import { THEME_PALETTE, flex_template } from '../../../../ui/theme';
+import { flex_template } from '../../../../ui/theme';
 import styled from '@emotion/styled';
-
-const {
-  dimensions: DIMENSIONS,
-} = THEME_PALETTE;
 
 const StyledHomeBanner = styled.section`
   ${flex_template};
   width: 100%;
   gap: 1rem;
   margin: 0 auto;
+  padding: 0 0 8rem;
   justify-content: space-between;
   min-height: 80vh;
   overflow: hidden;
-  max-width: ${DIMENSIONS.desktop_mx_w};
+  max-width: 1440px;
 
   .top {
-    min-width: 400px;
-    max-width: ${DIMENSIONS.desktop_mx_w};
+    min-width: 500px;
+  }
+
+  @media only screen and (max-width: 1440px) {
+    .top {
+      padding: 0 0 0 1.5vw;
+    }
   }
 
   @media only screen and (max-width: 650px) {
     flex-direction: column-reverse;
     width: 100%;
+    overflow: hidden;
     max-width: 100vw;
 
-    padding: 0 0 8rem;
-
     .top {
-      min-width: 300px;
+      min-width: 97vw;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    img {
+      width: 100%;
+      min-width: 600px;
+      max-height: min(70vh, 400px);
     }
   }
 `;

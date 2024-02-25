@@ -16,7 +16,8 @@ export type SizeVariants = 'unset' | 'inherit' |
     '2.25rem' | // 34px
     '2.5rem' | // 38px
     '2.75' | // 42 px
-    '3rem'; // 46 px
+    '3rem' | // 46 px
+    '4rem'; // 60px
 
 export type WeightVariants = '400' | '500' | '600' | '700';
 
